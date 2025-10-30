@@ -3,15 +3,18 @@
 import { useEffect, useState } from 'react';
 
 type Product = { id: number; name: string };
-
+const initialUsers: Product[] = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+];
 export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(initialUsers);
 
-  useEffect(() => {
-    fetch('/api/products')
-      .then((res) => res.json())
-      .then(setProducts);
-  }, []);
+//   useEffect(() => {
+//     fetch('/api/products')
+//       .then((res) => res.json())
+//       .then(setProducts);
+//   }, []);
 
   return (
     <main>

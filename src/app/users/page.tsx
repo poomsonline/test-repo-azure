@@ -4,20 +4,23 @@ import { useEffect, useState } from 'react';
 
 type User = { id: number; name: string };
 
+const initialUsers: User[] = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+];
+
 export default function UsersPage() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>(initialUsers);
 
-  useEffect(() => {
-
-    fetch('/api/users')
-      .then(async (res) => {
-        const data = await res.json()
-        setUsers( data);
-        console.log(data);
-      }
-    )
-      
-  }, []);
+//   useEffect(() => {
+//     // fetch('/api/users')
+//     //   .then(async (res) => {
+//     //     const data = await res.json()
+//     //     setUsers( data);
+//     //     console.log(data);
+//     //   }
+//     // )
+//   }, []);
 
   return (
     <main>
