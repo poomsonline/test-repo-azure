@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body style={{ padding: 20 }}>
         <nav style={{ marginBottom: 20 }}>
-          <Link href="/">Home</Link> |{" "}
+          <Link href="/">Home Page</Link> |{" "}
           <Link href="/users">Users</Link> |{" "}
           <Link href="/products">Products</Link>
         </nav>
