@@ -1,0 +1,42 @@
+name: Deploy Next.js App to Azure Web App
+
+on:
+  push:
+    branches:
+      - dynamic-version
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: 'Login to Azure'
+        uses: azure/login@v2
+        with:
+          client-id: <YOUR-ENTRA-APP-CLIENT-ID>
+          tenant-id: <YOUR-TENANT-ID>
+          subscription-id: <YOUR-SUBSCRIPTION-ID>
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: next-test-app
+          package: '.'
