@@ -1,6 +1,7 @@
 name: Deploy Next.js App to Azure Web App
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dynamic-version
